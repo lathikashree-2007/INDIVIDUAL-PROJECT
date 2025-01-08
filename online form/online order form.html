@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online Order Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .order-form {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 500px;
+    }
+
+    .order-form h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .order-form label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    .order-form input, .order-form select {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 20px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+
+    .order-form button {
+      width: 100%;
+      padding: 12px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    .order-form button:hover {
+      background-color: #218838;
+    }
+
+    .order-form .error {
+      color: red;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="order-form">
+    <h2>Online Order Form</h2>
+
+    <!-- Error message display -->
+    <div id="error-message" class="error"></div>
+
+    <label for="name">Client Name</label>
+    <input type="text" id="name" placeholder="Enter your name" required>
+
+    <label for="phone">Phone Number</label>
+    <input type="text" id="phone" placeholder="Enter your phone number" required>
+
+    <label for="address">Address</label>
+    <input type="text" id="address" placeholder="Enter your address" required>
+
+    <label for="payment">Payment Type</label>
+    <select id="payment" required>
+      <option value="">Select Payment Type</option>
+      <option value="credit">Credit Card</option>
+      <option value="paypal">PayPal</option>
+      <option value="cash">Cash on Delivery</option>
+    </select>
+
+    <button onclick="submitOrder()">Place Order</button>
+  </div>
+
+  <script>
+    function submitOrder() {
+      // Clear any previous error messages
+      document.getElementById('error-message').innerHTML = '';
+
+      // Get form values
+      const name = document.getElementById('name').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const address = document.getElementById('address').value.trim();
+      const payment = document.getElementById('payment').value;
+
+      // Validate the form fields
+      if (!name || !phone || !address || !payment) {
+        document.getElementById('error-message').innerHTML = 'Please fill in all fields!';
+        return;
+      }
+
+      // Form submission logic (this can be customized based on your requirements)
+      alert(`Order Placed!\n\nClient Name: ${name}\nPhone: ${phone}\nAddress: ${address}\nPayment Type: ${payment}`);
+    }
+  </script>
+
+</body>
+</html>
